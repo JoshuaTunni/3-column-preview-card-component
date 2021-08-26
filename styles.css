@@ -75,9 +75,12 @@ body {
 }
 
 /* ================
-  reuseable button = why? just to try functional css. if theres multiple components that share the same behaviour and appearance why not do one class for all?
+  reuseable button 
 =================== */
 .item__btn {
+  font-size: 0.9rem;
+  font-weight: bold;
+
   width: 100%;
   max-width: 140px;
   min-height: 45px;
@@ -95,13 +98,6 @@ body {
   mix-blend-mode: screen;
 
   cursor: pointer;
-}
-
-.item__btn::after {
-  content: "Learn More";
-
-  font-size: 0.9rem;
-  font-weight: bold;
 }
 
 .item__btn:hover {
