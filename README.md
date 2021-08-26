@@ -23,7 +23,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](https://your-solution-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/3column-preview-card-component-flexbox-bem-euwxEF9wr)
 - [Live Site URL](https://3-column-preview-card-component-admiring-fermi-dc4c7d.netlify.app/)
 
 ### Built with
