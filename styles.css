@@ -1,0 +1,206 @@
+/* ================
+  global settings 
+=================== */
+:root {
+  /* --- colours --- */
+  /* card colours */
+  --prim__bright-orange: hsl(31, 77%, 52%);
+  --prim__dark-cyan: hsl(184, 100%, 22%);
+  --prim__dark-cyan--darker: hsl(179, 100%, 13%);
+  /* paragraph */
+  --neut__transparent-white: hsla(0, 0%, 100%, 0.75);
+  /* background, heading and buttons */
+  --neut__very-light-grey: hsl(0, 0%, 95%);
+
+  /* --- card specs --- */
+  --card-item__corner-size: 10px;
+  --card-container__padding: 45px;
+  --card-container__padding--larger: 55px;
+  --card-item__large-height: 10px;
+
+  /* --- button specs --- */
+  --btn__width: 100px;
+  --btn__height: 35px;
+  --btn__hover-effect-spd: 0.12s /* 0.12s */;
+
+  /* --- attribution gradient text spec - saves me rewriting gradient stuff and instead just change the deg --- */
+  --attribution__gradient-degrees: -90deg;
+}
+
+body {
+  margin: 0;
+
+  background-color: var(--neut__very-light-grey);
+}
+
+/* ================
+  general card settings
+=================== */
+.card-container {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+  /* all colours, p overrides this */
+  color: var(--neut__very-light-grey);
+}
+
+.card__item {
+  /* all font fam, h1 overrides this */
+  font-family: "Lexend Deca", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+
+  max-width: 310px;
+  min-height: 425px;
+  padding: var(--card-container__padding);
+
+  box-sizing: border-box;
+}
+
+.card__item__content-container > h1 {
+  font-family: "Big Shoulders Display", cursive;
+
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.card__item__content-container > p {
+  /* to space button further down */
+  margin-bottom: 30px;
+
+  color: var(--neut__transparent-white);
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+/* ================
+  reuseable button = why? just to try functional css. if theres multiple components that share the same behaviour and appearance why not do one class for all?
+=================== */
+.item__btn {
+  width: 100%;
+  max-width: 140px;
+  min-height: 45px;
+  margin-top: auto;
+  border: 2px solid var(--neut__very-light-grey);
+  border-radius: 30px;
+
+  /* --- hover effect req settings ---*/
+  background: var(--neut__very-light-grey);
+  transition: color var(--btn__hover-effect-spd) ease-out;
+  /* inset to appear as background - for transition fx */
+  box-shadow: inset 0 0 5px 25px var(--neut__very-light-grey);
+  transition: box-shadow var(--btn__hover-effect-spd) ease-out;
+  /* screen lets ::after text be colour of card background */
+  mix-blend-mode: screen;
+
+  cursor: pointer;
+}
+
+.item__btn::after {
+  content: "Learn More";
+
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.item__btn:hover {
+  background: none;
+  color: var(--neut__very-light-grey);
+  box-shadow: inset 0 0 0 0 var(--neut__very-light-grey);
+}
+
+/* ================
+  specific card background colours and corners 
+=================== */
+.card-container > :nth-child(1) {
+  background-color: var(--prim__bright-orange);
+  border-radius: var(--card-item__corner-size) var(--card-item__corner-size) 0 0;
+}
+
+.card-container > :nth-child(2) {
+  background-color: var(--prim__dark-cyan);
+}
+
+.card-container > :nth-child(3) {
+  background-color: var(--prim__dark-cyan--darker);
+  border-radius: 0 0 var(--card-item__corner-size) var(--card-item__corner-size);
+}
+
+/* ================
+  attribution
+=================== */
+.attribution > p {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 0.9rem;
+
+  text-decoration: none;
+
+  /* why this not text align? because the gradient would start at the screens edge, so the gradient wouldnt stretch JUST over the text */
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 50px;
+
+  background-image: linear-gradient(
+    var(--attribution__gradient-degrees),
+    var(--prim__bright-orange),
+    var(--prim__dark-cyan),
+    var(--prim__dark-cyan--darker)
+  );
+  background-image: -webkit-linear-gradient(
+    var(--attribution__gradient-degrees),
+    var(--prim__bright-orange),
+    var(--prim__dark-cyan),
+    var(--prim__dark-cyan--darker)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.attribution > p > a {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ================
+  media queries
+=================== */
+/* larger screens (desktop, large tablets, etc.) */
+@media only screen and (min-width: 750px) {
+  :root {
+    /* adjust degree */
+    --attribution__gradient-degrees: 45deg;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100vh;
+  }
+
+  .card-container {
+    display: flex;
+  }
+
+  .card__item {
+    /* longer body in desktop image it seems */
+    min-height: 480px;
+
+    /* desktop image shows text breaking line more, so extra padding */
+    padding: var(--card-container__padding--larger);
+  }
+
+  .card-container > :nth-child(1) {
+    border-radius: var(--card-item__corner-size) 0 0
+      var(--card-item__corner-size);
+  }
+
+  .card-container > :nth-child(3) {
+    border-radius: 0 var(--card-item__corner-size) var(--card-item__corner-size)
+      0;
+  }
+}
