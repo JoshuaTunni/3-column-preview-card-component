@@ -135,7 +135,7 @@ body {
   font-size: 0.9rem;
 
   text-decoration: none;
-
+  text-align: center;
   /* why this not text align? because the gradient would start at the screens edge, so the gradient wouldnt stretch JUST over the text */
   width: fit-content;
   margin: 0 auto;
