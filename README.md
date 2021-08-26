@@ -23,8 +23,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://3-column-preview-card-component-admiring-fermi-dc4c7d.netlify.app/)
+- [Solution URL](https://your-solution-url.com)
+- [Live Site URL](https://3-column-preview-card-component-admiring-fermi-dc4c7d.netlify.app/)
 
 ### Built with
 
